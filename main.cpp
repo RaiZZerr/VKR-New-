@@ -9,5 +9,5 @@ int main()
 	//CreateRandomShapes("new_data.csv", { 1000, 0 });
 	return 0;
 
-	//Проверка
+	//Проверка успешна
 }
