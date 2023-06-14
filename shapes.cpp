@@ -396,13 +396,26 @@ vector <Point> Cylinder::CreateFooting(double r, double h, double o)
 	return p;
 }
 
+//Point rotatePoints(Point& point, double angle)
+//{
+//	double cosTheta = cos(angle);
+//	double sinTheta = sin(angle);
+//	Point rotatedPoint;
+//	rotatedPoint.x = point.x * cosTheta + point.z * sinTheta;
+//	rotatedPoint.y = point.y;
+//	rotatedPoint.z = -point.x * sinTheta + point.z * cosTheta;
+//	return rotatedPoint;
+//}
+
 // Функция генерации стенок цилиндра
 vector <Point> Cylinder::CreateWalls()
 {
 	vector <Point> p;
 	Point dot;
+	Point newp;
 	double hlp_y = 0;
 	double k = 0;
+	double theta = GetRandIntNumb(0, 360) * M_PI / 180.0f;
 	while (hlp_y < h)
 	{
 		k = GetRandRealNumb(2, 4);
@@ -412,7 +425,10 @@ vector <Point> Cylinder::CreateWalls()
 			dot.x = r * cos(i) + k_x;
 			dot.y = hlp_y + k_y;
 			dot.z = r * sin(i) + k_z;
-			p.push_back(dot);
+			newp.x = dot.x * cos(theta) - dot.y * sin(theta);
+			newp.y = dot.x * sin(theta) + dot.y * cos(theta);
+			newp.z = dot.z;
+			p.push_back(newp);
 		}
 	}
 	return p;

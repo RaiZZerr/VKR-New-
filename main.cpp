@@ -5,6 +5,6 @@ using namespace std;
 
 int main()
 {
-	CreateRandomShapes("dataset.csv", { 100, 0 });
+	CreateShapes("cylinder.csv", {ShapeType::Cylinder, 10, 0 });
 	return 0;
 }
