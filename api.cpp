@@ -1,6 +1,6 @@
 
 #include "api.h"
-#include "figures.h"
+#include "shapes.h"
 #include "writefile.h"
 #include "randomization.h"
 
@@ -10,9 +10,9 @@ void CreateShapes(const char fileName[], funcParams param)
     vector <Point> Points;
     vector <vector <Point>> Figures;
     string str;
-    Figure* Cyl = new Cylinder(0, 0);
-    Figure* Sph = new Sphere(0);
-    Figure* Surface = new Plane(0);
+    Figure* Cyl = new Cylinder(0, 0, 0, 0, 0);
+    Figure* Sph = new Sphere(0, 0, 0, 0);
+    Figure* Surface = new Plane(0, 0, 0, 0);
     int check = -1;
     if (fileName[strlen(fileName) - 1] == 'v' &&
         fileName[strlen(fileName) - 2] == 's' &&
@@ -32,7 +32,7 @@ void CreateShapes(const char fileName[], funcParams param)
     case ShapeType::Cylinder:
         for (int i = 0; i < param.count; i++)
         {
-            Figure* Cyl = new Cylinder(GetRandIntNumb(10, 100), GetRandIntNumb(10, 100));
+            Figure* Cyl = new Cylinder(GetRandIntNumb(10, 100), GetRandIntNumb(10, 100), GetRandRealNumb(-100, 100), GetRandRealNumb(-100, 100), GetRandRealNumb(-100, 100));
             if (param.partition == 0)
             {
                 Points = Cyl->GetAsPoints(0);
@@ -56,7 +56,7 @@ void CreateShapes(const char fileName[], funcParams param)
     case ShapeType::Sphere:
         for (int i = 0; i < param.count; i++)
         {
-            Figure* Sph = new Sphere(GetRandIntNumb(10, 100));
+            Figure* Sph = new Sphere(GetRandIntNumb(10, 100), GetRandRealNumb(-100, 100), GetRandRealNumb(-100, 100), GetRandRealNumb(-100, 100));
             if (param.partition == 0)
             {
                 Points = Sph->GetAsPoints(0);
@@ -80,7 +80,7 @@ void CreateShapes(const char fileName[], funcParams param)
     case ShapeType::Plane:
         for (int i = 0; i < param.count; i++)
         {
-            Figure* Surface = new Plane(GetRandIntNumb(5000, 10000));
+            Figure* Surface = new Plane(GetRandIntNumb(1000, 3000), GetRandRealNumb(-100, 100), GetRandRealNumb(-100, 100), GetRandRealNumb(-100, 100));
             if (param.partition == 0)
             {
                 Points = Surface->GetAsPoints(0);
@@ -112,9 +112,9 @@ void CreateRandomShapes(const char fileName[], funcParams1 param)
     vector <vector <Point>> Figures;
     string str;
     int hlp = 0;
-    Figure* Cyl = new Cylinder(0, 0);
-    Figure* Sph = new Sphere(0);
-    Figure* Surface = new Plane(0);
+    Figure* Cyl = new Cylinder(0, 0, 0, 0, 0);
+    Figure* Sph = new Sphere(0, 0, 0, 0);
+    Figure* Surface = new Plane(0, 0, 0, 0);
     int check = -1;
     if (fileName[strlen(fileName) - 1] == 'v' &&
         fileName[strlen(fileName) - 2] == 's' &&
@@ -135,7 +135,7 @@ void CreateRandomShapes(const char fileName[], funcParams1 param)
         switch (hlp)
         {
         case 1:
-            Cyl = new Cylinder(GetRandIntNumb(10, 100), GetRandIntNumb(10, 100));
+            Cyl = new Cylinder(GetRandIntNumb(10, 100), GetRandIntNumb(10, 100), GetRandRealNumb(-100, 100), GetRandRealNumb(-100, 100), GetRandRealNumb(-100, 100));
             if (param.partition == 0)
             {
                 Points = Cyl->GetAsPoints(0);
@@ -156,7 +156,7 @@ void CreateRandomShapes(const char fileName[], funcParams1 param)
             delete Cyl;
         break;
         case 2:
-            Sph = new Sphere(GetRandIntNumb(10, 100));
+            Sph = new Sphere(GetRandIntNumb(10, 100), GetRandRealNumb(-100, 100), GetRandRealNumb(-100, 100), GetRandRealNumb(-100, 100));
             if (param.partition == 0)
             {
                 Points = Sph->GetAsPoints(0);
@@ -177,7 +177,7 @@ void CreateRandomShapes(const char fileName[], funcParams1 param)
             delete Sph;
         break;
         case 3:
-            Surface = new Plane(GetRandIntNumb(5000, 10000));
+            Surface = new Plane(GetRandIntNumb(1000, 3000), GetRandRealNumb(-100, 100), GetRandRealNumb(-100, 100), GetRandRealNumb(-100, 100));
             if (param.partition == 0)
             {
                 Points = Surface->GetAsPoints(0);

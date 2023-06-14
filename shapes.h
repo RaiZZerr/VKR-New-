@@ -11,7 +11,7 @@ class Point {
 		double x, y, z;
 };
 
-// Класс, описывающий любую фигуру
+// Класс, описывающий любую поверхность
 class Figure: public Point {
 	public:
 		//vector <Point> p;
@@ -26,13 +26,13 @@ class Figure: public Point {
 // Класс, описывающий цилиндр
 class Cylinder: public Figure {
 	public:
-		double r, h;
-		Cylinder(double radius, double height);
+		double r, h, k_x, k_y, k_z;
+		Cylinder(double radius, double height, double offset_x, double offset_y, double offset_z);
 		vector <Point> GetAsPoints(double o) override;
 		vector <Point> CreateFooting(double r, double h);
-		vector <Point> CreateWalls(double r, double h);
+		vector <Point> CreateWalls();
 		vector <Point> CreateFooting(double r, double h, double o);
-		vector <Point> CreateWalls(double r, double h, double o);
+		vector <Point> CreateWalls(double o);
 		string GetAsCSV(vector <vector <Point>> f) override;
 		string GetAsCSV(vector <Point> p) override;
 		string GetAsJSON(vector <vector <Point>> f) override;
@@ -42,8 +42,8 @@ class Cylinder: public Figure {
 class Plane: public Figure {
 	public:
 		int Point_Count;
-		double angle;
-		Plane(int Count);
+		double k_x, k_y, k_z;
+		Plane(int Count, double offset_x, double offset_y, double offset_z);
 		vector <Point> GetAsPoints(double o) override;
 		string GetAsCSV(vector <vector <Point>> f) override;
 		string GetAsCSV(vector <Point> p) override;
@@ -53,15 +53,15 @@ class Plane: public Figure {
 // Класс, описывающий сферу
 class Sphere: public Figure {
 	public:
-		double r;
-		Sphere(double radius);
+		double r, k_x, k_y, k_z;
+		Sphere(double radius, double offset_x, double offset_y, double offset_z);
 		vector <Point> GetAsPoints(double o) override;
-		vector <Point> CreateFooting(double r);
-		vector <Point> CreateUpHemisphere(double r);
-		vector <Point> CreateDownHemisphere(double r);
-		vector <Point> CreateFooting(double r, double o);
-		vector <Point> CreateUpHemisphere(double r, double o);
-		vector <Point> CreateDownHemisphere(double r, double o);
+		vector <Point> CreateFooting();
+		vector <Point> CreateUpHemisphere();
+		vector <Point> CreateDownHemisphere();
+		vector <Point> CreateFooting(double o);
+		vector <Point> CreateUpHemisphere(double o);
+		vector <Point> CreateDownHemisphere(double o);
 		string GetAsCSV(vector <vector <Point>> f) override;
 		string GetAsCSV(vector <Point> p) override;
 		string GetAsJSON(vector <vector <Point>> f) override;

@@ -6,7 +6,7 @@
 
 using namespace std;
 
-// Функция записи в файл
+// Функция записи строки в файл
 void WriteFile(const char fileName[],string a)
 {
 	if (fileName[strlen(fileName) - 1] == 'v' &&
@@ -18,7 +18,7 @@ void WriteFile(const char fileName[],string a)
 		if (!check.is_open())
 		{
 			File.open(fileName);
-			File << "Number,Type,X,Y,Z" << endl;
+			File << "Number;Type;X;Y;Z" << endl;
 			File.close();
 		}
 		File.open(fileName, ios_base::app);
