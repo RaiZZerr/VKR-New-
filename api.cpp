@@ -5,7 +5,7 @@
 #include "randomization.h"
 
 
-void CreateShapes(const char fileName[], funcParams param)
+void CreateShapes(const char fileName[], ShapeProperties param)
 {
     vector <Point> Points;
     vector <vector <Point>> Figures;
@@ -106,7 +106,7 @@ void CreateShapes(const char fileName[], funcParams param)
 }
 
 // Функция генерации Count фигур рандомного типа
-void CreateRandomShapes(const char fileName[], funcParams1 param)
+void CreateRandomShapes(const char fileName[], RandomShapeProperties param)
 {
     vector <Point> Points;
     vector <vector <Point>> Figures;

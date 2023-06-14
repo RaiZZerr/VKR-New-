@@ -14,7 +14,7 @@ enum class ShapeType {
     count - требуемое количестве сгенерированных фигур
     partition - величина стандартного отклонения для нормального распределения точек (если (= 0), нормальное распределение не используется)
 */
-struct funcParams {
+struct ShapeProperties {
     ShapeType type;
     int count;
     double partition;
@@ -27,7 +27,7 @@ struct funcParams {
     count - требуемое количестве сгенерированных фигур
     partition - величина стандартного отклонения для нормального распределения точек (если (= 0), нормальное распределение не используется)
 */
-struct funcParams1 {
+struct RandomShapeProperties {
     int count;
     double partition;
 };
@@ -39,7 +39,7 @@ struct funcParams1 {
     \param param Структура параметров функции CreateShapes (смотри описание funcParams)
     \return Файл, содержащий сгенерированные данные требуемых фигур
 */
-void CreateShapes(const char fileName[], funcParams param);
+void CreateShapes(const char fileName[], ShapeProperties param);
 
 /*!
     Генерирует файл с именем "fileName" и расширением .csv или .json (в зависимости от того, какое расширение указано в имени),содержащий фигуры рандомного типа в количестве param.count
@@ -48,5 +48,5 @@ void CreateShapes(const char fileName[], funcParams param);
     \param param Структура параметров функции CreateRandomShapes (смотри описание funcParams1)
     \return Файл, содержащий сгенерированные данные требуемых фигур
 */
-void CreateRandomShapes(const char fileName[], funcParams1 param);
+void CreateRandomShapes(const char fileName[], RandomShapeProperties param);
 
