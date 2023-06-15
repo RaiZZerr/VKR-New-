@@ -8,7 +8,7 @@ project(API)
 # Создание библиотек, от которых зависит динамическая библиотека
 add_library(random randomization.h randomization.cpp)
 add_library(writeinfile writefile.h writefile.cpp)
-add_library(shapes figures.h figures.cpp)
+add_library(shapes shapes.h shapes.cpp)
 
 # Создание динамической библиотеки с именем API
 add_library(API SHARED api.cpp)
@@ -43,4 +43,4 @@ target_link_libraries(myAPI
 )
 
 
-#  add_library(API SHARED api.cpp randomization.cpp writefile.cpp figures.cpp)
+#  add_library(API SHARED api.cpp randomization.cpp writefile.cpp shapes.cpp)

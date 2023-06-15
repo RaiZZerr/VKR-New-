@@ -20,6 +20,7 @@ class Figure: public Point {
 		virtual string GetAsCSV(vector <Point> p);
 		virtual string GetAsJSON(vector <vector <Point>> f);
 		virtual vector <Point> GetAsPoints(double o);
+		Point rotatePoint(Point p, double angle);
 		size_t& NumberInCSV() { static size_t c = 0; return ++c; }
 };
 

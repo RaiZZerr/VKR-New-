@@ -5,6 +5,16 @@
 #include <string>
 #include <cmath>
 
+//
+Point Figure::rotatePoint(Point p, double angle)
+{
+	Point p_new;
+	double theta = angle * M_PI / 180.0f;
+	p_new.x = p.x * cos(theta) - p.y * sin(theta);
+	p_new.y = p.x * sin(theta) + p.y * cos(theta);
+	p_new.z = p.z;
+	return p_new;
+}
 // Конструктор поверхности с заданным кол-вом точек (Count)
 Plane::Plane(int Count, double offset_x, double offset_y, double offset_z)
 {
@@ -415,7 +425,7 @@ vector <Point> Cylinder::CreateWalls()
 	Point newp;
 	double hlp_y = 0;
 	double k = 0;
-	double theta = GetRandIntNumb(0, 360) * M_PI / 180.0f;
+	double angle = GetRandIntNumb(0, 360);
 	while (hlp_y < h)
 	{
 		k = GetRandRealNumb(2, 4);
@@ -425,10 +435,12 @@ vector <Point> Cylinder::CreateWalls()
 			dot.x = r * cos(i) + k_x;
 			dot.y = hlp_y + k_y;
 			dot.z = r * sin(i) + k_z;
-			newp.x = dot.x * cos(theta) - dot.y * sin(theta);
-			newp.y = dot.x * sin(theta) + dot.y * cos(theta);
-			newp.z = dot.z;
-			p.push_back(newp);
+			//newp.x = dot.x * cos(theta) - dot.y * sin(theta);
+			//newp.y = dot.x * sin(theta) + dot.y * cos(theta);
+			//newp.z = dot.z;
+			newp = rotatePoint(dot, GetRandIntNumb(0, 360));  //пончик
+			p.push_back(newp);  // пончик
+			//p.push_back(rotatePoint(dot, angle));
 		}
 	}
 	return p;

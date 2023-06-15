@@ -5,6 +5,6 @@ using namespace std;
 
 int main()
 {
-	CreateShapes("cylinder.csv", {ShapeType::Cylinder, 10, 0 });
+	CreateShapes("torus.csv", { ShapeType::Cylinder, 10, 0 });
 	return 0;
 }
