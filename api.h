@@ -1,3 +1,8 @@
+
+#include <fstream>
+
+using namespace std;
+
 /*! \file */
 
 /// Набор возможных типов фигур
@@ -39,7 +44,7 @@ struct RandomShapeProperties {
     \param param Структура параметров функции CreateShapes (смотри описание funcParams)
     \return Файл, содержащий сгенерированные данные требуемых фигур
 */
-void CreateShapes(const char fileName[], ShapeProperties param);
+string CreateShapes(ShapeProperties param);
 
 /*!
     Генерирует файл с именем "fileName" и расширением .csv или .json (в зависимости от того, какое расширение указано в имени),содержащий фигуры рандомного типа в количестве param.count
@@ -48,5 +53,5 @@ void CreateShapes(const char fileName[], ShapeProperties param);
     \param param Структура параметров функции CreateRandomShapes (смотри описание funcParams1)
     \return Файл, содержащий сгенерированные данные требуемых фигур
 */
-void CreateRandomShapes(const char fileName[], RandomShapeProperties param);
+string CreateRandomShapes(RandomShapeProperties param);
 

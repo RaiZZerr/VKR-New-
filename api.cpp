@@ -5,7 +5,7 @@
 #include "randomization.h"
 
 
-void CreateShapes(const char fileName[], ShapeProperties param)
+string CreateShapes(ShapeProperties param)
 {
     vector <Point> Points;
     vector <vector <Point>> Figures;
@@ -13,20 +13,20 @@ void CreateShapes(const char fileName[], ShapeProperties param)
     Figure* Cyl = new Cylinder(0, 0, 0, 0, 0);
     Figure* Sph = new Sphere(0, 0, 0, 0);
     Figure* Surface = new Plane(0, 0, 0, 0);
-    int check = -1;
-    if (fileName[strlen(fileName) - 1] == 'v' &&
-        fileName[strlen(fileName) - 2] == 's' &&
-        fileName[strlen(fileName) - 3] == 'c')
-    {
-        check = 0;
-    }
-    else if (fileName[strlen(fileName) - 1] == 'n' &&
-        fileName[strlen(fileName) - 2] == 'o' &&
-        fileName[strlen(fileName) - 3] == 's' &&
-        fileName[strlen(fileName) - 4] == 'j')
-    {
-        check = 1;
-    }
+    int check = 0;
+    //if (fileName[strlen(fileName) - 1] == 'v' &&
+    //    fileName[strlen(fileName) - 2] == 's' &&
+    //    fileName[strlen(fileName) - 3] == 'c')
+    //{
+    //    check = 0;
+    //}
+    //else if (fileName[strlen(fileName) - 1] == 'n' &&
+    //    fileName[strlen(fileName) - 2] == 'o' &&
+    //    fileName[strlen(fileName) - 3] == 's' &&
+    //    fileName[strlen(fileName) - 4] == 'j')
+    //{
+    //    check = 1;
+    //}
     switch (param.type)
     {
     case ShapeType::Cylinder:
@@ -102,11 +102,12 @@ void CreateShapes(const char fileName[], ShapeProperties param)
         }
         break;
     }
-    WriteFile(fileName, str);
+    //WriteFile(fileName, str);
+   return str;
 }
 
 // Функция генерации Count фигур рандомного типа
-void CreateRandomShapes(const char fileName[], RandomShapeProperties param)
+string CreateRandomShapes(RandomShapeProperties param)
 {
     vector <Point> Points;
     vector <vector <Point>> Figures;
@@ -115,8 +116,8 @@ void CreateRandomShapes(const char fileName[], RandomShapeProperties param)
     Figure* Cyl = new Cylinder(0, 0, 0, 0, 0);
     Figure* Sph = new Sphere(0, 0, 0, 0);
     Figure* Surface = new Plane(0, 0, 0, 0);
-    int check = -1;
-    if (fileName[strlen(fileName) - 1] == 'v' &&
+    int check = 0;
+  /*  if (fileName[strlen(fileName) - 1] == 'v' &&
         fileName[strlen(fileName) - 2] == 's' &&
         fileName[strlen(fileName) - 3] == 'c')
     {
@@ -128,7 +129,7 @@ void CreateRandomShapes(const char fileName[], RandomShapeProperties param)
         fileName[strlen(fileName) - 4] == 'j')
     {
         check = 1;
-    }
+    }*/
     for (int i = 0; i < param.count; i++)
     {
         hlp = GetRandIntNumb(1, 3);
@@ -199,5 +200,6 @@ void CreateRandomShapes(const char fileName[], RandomShapeProperties param)
         break;
         }
     }
-    WriteFile(fileName, str);
+    //WriteFile(fileName, str);
+    return str;
 }
