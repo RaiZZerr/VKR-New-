@@ -44,6 +44,8 @@ struct RandomShapeProperties {
     \param param Структура параметров функции CreateShapes (смотри описание funcParams)
     \return Файл, содержащий сгенерированные данные требуемых фигур
 */
+void CreateShapes(const char fileName[], ShapeProperties param);
+
 string CreateShapes(ShapeProperties param);
 
 /*!
@@ -53,5 +55,7 @@ string CreateShapes(ShapeProperties param);
     \param param Структура параметров функции CreateRandomShapes (смотри описание funcParams1)
     \return Файл, содержащий сгенерированные данные требуемых фигур
 */
+void CreateRandomShapes(const char fileName[], RandomShapeProperties param);
+
 string CreateRandomShapes(RandomShapeProperties param);
 
