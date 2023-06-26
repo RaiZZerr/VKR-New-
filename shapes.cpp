@@ -412,13 +412,11 @@ vector <Point> Cylinder::CreateWalls()
 	vector <Point> p;
 	Point dot;
 	double hlp_y = 0;
-	double k = 0;
 	double angle = GetRandIntNumb(0, 360);
 	while (hlp_y < h)
 	{
-		k = GetRandRealNumb(2, 4);
-		hlp_y += k;
-		for (int i = 0; i <= 360; i += 5)
+		hlp_y += 3;
+		for (int i = 0; i <= 360; i += 3)
 		{
 			dot.x = r * cos(i) + k_x;
 			dot.y = hlp_y + k_y;
@@ -485,7 +483,7 @@ vector <Point> Sphere::CreateFooting()
 {
 	vector <Point> p;
 	Point dot;
-	for (int i = 0; i <= 360; i += 2)
+	for (int i = 0; i <= 360; i += 3)
 	{
 		dot.x = r * cos(i) + k_x;
 		dot.y = 0 + k_y;
@@ -522,9 +520,9 @@ vector <Point> Sphere::CreateUpHemisphere()
 		{
 			break;
 		}
-		hlp_y += GetRandRealNumb(2, 3);
+		hlp_y += 3;
 		hlp_r = sqrt(abs(r * r - hlp_y * hlp_y));
-		for (int i = 0; i <= 360; i += GetRandRealNumb(1, 10))
+		for (int i = 0; i <= 360; i += 3)
 		{
 			dot.x = hlp_r * cos(i) + k_x;
 			dot.y = hlp_y + k_y;
@@ -573,9 +571,9 @@ vector <Point> Sphere::CreateDownHemisphere()
 		{
 			break;
 		}
-		hlp_y -= GetRandRealNumb(2, 3);
+		hlp_y -= 3;
 		hlp_r = sqrt(abs(r * r - ((-hlp_y) * (-hlp_y))));
-		for (int i = 0; i <= 360; i += GetRandRealNumb(1, 10))
+		for (int i = 0; i <= 360; i += 3)
 		{
 			dot.x = hlp_r * cos(i) + k_x;
 			dot.y = hlp_y + k_y;
